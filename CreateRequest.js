@@ -14,7 +14,7 @@ module.exports = [
     },
     
     function (session) {
-        builder.Prompts.text(session, 'Total In-Time in hours');
+        builder.Prompts.text(session, 'Please enter Total In-Time in hours (For ex. if you have worked for 2 hours enter 2 or if you have worked for 4.5 hours then enter 4.5)');
     },
     function (session, results, next) {
         session.dialogData.inTime = results.response;
