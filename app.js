@@ -77,7 +77,7 @@ bot.dialog('/ApproveLeave', [
     function (session, results, next) {
         session.send("approving leave....");
         // Add code to invoke API to approve request.
-        session.endDialog("Leave Id : " + session.dialogData.leaveId + "Approved .");
+        session.endDialog("Leave Id : " + session.dialogData.leaveId + " Approved .");
         session.beginDialog('GetPendingApprovals');
     }
 ]);
@@ -91,7 +91,7 @@ bot.dialog('/RejectLeave', [
     function (session, results, next) {
         session.send("Rejecting leave....");
         // Add code to invoke API to reject request.
-        session.endDialog("Leave Id : " + session.dialogData.leaveId + "Rejected .");
+        session.endDialog("Leave Id : " + session.dialogData.leaveId + " Rejected .");
         session.beginDialog('GetPendingApprovals');
     }
 ]);
