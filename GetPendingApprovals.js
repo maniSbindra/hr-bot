@@ -6,15 +6,17 @@ module.exports = [
 
 function (session)
 {
+  // Add code for to check if user is authenticated and backend API authentication token in present session. If not invoke authentication flow
+
    session.send('Fetching your pending approvals....');
     
 
-  //dummy object - get this from database
-  //@todo: get pending approvals
-  var leavesPending = [{"leaveid" : 349,"userName":"nishigandhas","comments":"i need leave"},{"leaveid":123,"userName":"brijraj singh","comments":"i need this leave"},{"leaveid":345,"userName":"Mani bindra","comments":"i need comp-off"}]
-
+  //stubbed object - Need to fetch from backend API
+  // Add code to invoke API.
+  
+  var leavesPending = [{"leaveid" : 9132122,"userAlias":"nimitg","userName":"Nimit S Gandhi","comments":"Going on Vacation."},{"leaveid":9133257,"userAlias":"bsingh","userName":"brijraj singh","comments":"Need to go to passport office"},{"leaveid":9133893,"userAlias": "maniman","userName": "Mani bindra","comments":"comp-off for release over weekend "}]
     
-     var message = new builder.Message()
+  var message = new builder.Message()
                     .attachmentLayout(builder.AttachmentLayout.carousel)
                     .attachments(leavesPending.map(leavesAsAttachments));
      session.send(message);
@@ -26,8 +28,8 @@ function (session)
 // Helpers
 function leavesAsAttachments(leave) {
     return new builder.HeroCard()
-        .title(leave.userName)
-        .subtitle(leave.comments)
+        .title("Leave Id : " +leave.leaveid + ", Employee Name : " + leave.userName)
+        .subtitle("Empoyee Comment: "+ leave.comments)
         .buttons([
            builder.CardAction.dialogAction(null, "ApproveLeave", leave.leaveid, "Approve"),
            builder.CardAction.dialogAction(null, "RejectLeave", leave.leaveid, "Reject"), 

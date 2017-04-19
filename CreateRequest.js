@@ -3,6 +3,7 @@ var builder = require('botbuilder');
 module.exports = [
 
     function (session) {
+        // Add code for to check if user is authenticated and backend API authentication token in present session. If not invoke authentication flow
         session.send('Lets file your comp-off request!');
         builder.Prompts.text(session, 'Please enter Date of your Comp-off leave (dd/mm/yyyy)');
     },
@@ -38,6 +39,7 @@ module.exports = [
         var comments = session.dialogData.comments;
 
         session.send('Ok. Applying for your leave now for %s...',compOffDate);
+        // Add code for backend API call Here
         session.send('Done! Have good time.');
 
         session.endDialog(); 
